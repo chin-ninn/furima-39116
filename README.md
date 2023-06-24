@@ -59,7 +59,7 @@ Things you may want to cover:
 
 ### Association
 - belongs_to :user
-- has_one :addresses_prices
+- has_one :addresses
 - has_one :prices
 
 
@@ -75,10 +75,6 @@ Things you may want to cover:
 | phone_number     | integer    | null: false                    |
 | user_id          | references | null: false, foreign_key: true |
 | item_id          | references | null: false, foreign_key: true |
-| price            | integer    | null: false                    |
-| fee              | integer    | null: false                    |
-| profit           | integer    | null: false                    |
-| item_id          | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -87,12 +83,12 @@ Things you may want to cover:
 
 ## pricesテーブル
 
-| Column           | Type       | Options                        |
-| ---------------- | ---------- | ------------------------------ |
-| price            | integer    | null: false                    |
-| fee              | integer    | null: false                    |
-| profit           | integer    | null: false                    |
-| item_id          | references | null: false, foreign_key: true |
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| price   | integer    | null: false                    |
+| fee     | integer    | null: false                    |
+| profit  | integer    | null: false                    |
+| item_id | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :item
