@@ -22,7 +22,6 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-<<<<<<< HEAD
 
 ## usersテーブル
 
@@ -96,5 +95,3 @@ Things you may want to cover:
 
 ### Association
 - belongs_to :item
-=======
->>>>>>> parent of 0e277e9 (デプロイ)
