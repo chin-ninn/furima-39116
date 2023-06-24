@@ -25,23 +25,21 @@ Things you may want to cover:
 
 ## usersテーブル
 
-| Column                | Type    | Options     |
-| --------------------- | ------- | ----------- |
-| nickname              | string  | null: false |
-| email                 | string  | null: false |
-| password              | string  | null: false |
-| encrypted_password    | string  | null: false |
-| family_name           | string  | null: false |
-| first_name            | string  | null: false |
-| family_name_reading   | string  | null: false |
-| first_name_reading    | string  | null: false |
-| birth_year            | integer | null: false |
-| birth_month           | integer | null: false |
-| birth_day             | integer | null: false |
+| Column                | Type    | Options                   |
+| --------------------- | ------- | ------------------------- |
+| nickname              | string  | null: false               |
+| email                 | string  | null: false, unique: true |
+| encrypted_password    | string  | null: false               |
+| family_name           | string  | null: false               |
+| first_name            | string  | null: false               |
+| family_name_reading   | string  | null: false               |
+| first_name_reading    | string  | null: false               |
+| birth                 | data    | null: false               |
 
 ### Association
 - has_many :items
-- has_one :addresses
+- has_many :purchases
+- has_many :addresses
 
 ## itemsテーブル
 
@@ -50,34 +48,45 @@ Things you may want to cover:
 | item_name        | string     | null: false                    |
 | item_text        | string     | null: false                    |
 | item_category    | integer    | null: false                    |
-| item_condition   | integer    | null: false                    |
-| delivery_charges | integer    | null: false                    |
-| delivery_area    | integer    | null: false                    |
-| delivery_days    | integer    | null: false                    |
+| condition_id     | integer    | null: false                    |
+| charges_id       | integer    | null: false                    |
+| area_id          | integer    | null: false                    |
+| days_id          | integer    | null: false                    |
 | price            | integer    | null: false                    |
-| fee              | integer    | null: false                    |
-| profit           | integer    | null: false                    |
-| user_id          | references | null: false, foreign_key: true |
+| user             | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
+- has_one :purchases
 - has_one :addresses
+
+
+## purchasesテーブル
+
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| user             | references | null: false, foreign_key: true |
+| item             | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :user
+- belongs_to :item
+- belongs_to :addresses
 
 
 ## addressesテーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
-| postal_number    | integer    | null: false                    |
-| prefecture       | integer    | null: false                    |
+| postal_number    | string     | null: false                    |
+| area_id          | integer    | null: false                    |
 | city             | string     | null: false                    |
 | house_number     | string     | null: false                    |
 | building_name    | string     |                                |
-| phone_number     | integer    | null: false                    |
-| user_id          | references | null: false, foreign_key: true |
-| item_id          | references | null: false, foreign_key: true |
+| phone_number     | string     | null: false                    |
 
 ### Association
 - belongs_to :user
 - belongs_to :item
+- has_one :purchases
 
