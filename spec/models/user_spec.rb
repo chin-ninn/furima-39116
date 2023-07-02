@@ -56,14 +56,14 @@ RSpec.describe User, type: :model do
         @user.password = 'aaaaaa'
         @user.password_confirmation = 'aaaaaa'
         @user.valid?
-        expect(@user.errors.full_messages).to include 'Password Password include both letters and numbers in password'
+        expect(@user.errors.full_messages).to include 'Password include both letters and numbers in password'
       end
 
       it 'passwordが半角数字のみでは登録できない' do
         @user.password = '000000'
         @user.password_confirmation = '000000'
         @user.valid?
-        expect(@user.errors.full_messages).to include 'Password Password include both letters and numbers in password'
+        expect(@user.errors.full_messages).to include 'Password include both letters and numbers in password'
       end
 
       it 'passwordとpassword_confirmationが一致していないと登録できない' do
@@ -88,13 +88,13 @@ RSpec.describe User, type: :model do
       it 'family_nameに半角英字、全角英字、半角カタカナが含まれると登録できない' do
         @user.family_name = 'ｙあmaﾀﾞ'
         @user.valid?
-        expect(@user.errors.full_messages).to include 'Family name Use double-byte characters'
+        expect(@user.errors.full_messages).to include 'Family name use double-byte characters'
       end
 
       it 'first_nameに半角英字、全角英字、半角カタカナが含まれると登録できない' do
         @user.first_name = 'ｔあroｳ'
         @user.valid?
-        expect(@user.errors.full_messages).to include 'First name Use double-byte characters'
+        expect(@user.errors.full_messages).to include 'First name use double-byte characters'
       end
 
       it 'family_name_readingが空だと登録できない' do
@@ -112,13 +112,13 @@ RSpec.describe User, type: :model do
       it 'family_name_readingに全角漢字、全角ひらがな、半角カタカナが含まれると登録できない' do
         @user.family_name_reading = 'やﾏ田'
         @user.valid?
-        expect(@user.errors.full_messages).to include 'Family name reading Use double-byte kana'
+        expect(@user.errors.full_messages).to include 'Family name reading use double-byte kana'
       end
 
       it 'first_name_readingに全角漢字、全角ひらがな、半角カタカナが含まれると登録できない' do
         @user.first_name_reading = '太ろｳ'
         @user.valid?
-        expect(@user.errors.full_messages).to include 'First name reading Use double-byte kana'
+        expect(@user.errors.full_messages).to include 'First name reading use double-byte kana'
       end
 
       it 'birthが空だと登録できない' do
