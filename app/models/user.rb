@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :nickname,            presence: true
   validates :birth,               presence: true
 
-  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
+  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
   validates_format_of :password, with: PASSWORD_REGEX, message: 'include both letters and numbers in password'
 
   with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥々ー]+\z/, message: 'use double-byte characters' } do

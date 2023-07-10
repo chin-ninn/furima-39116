@@ -5,12 +5,12 @@ class Item < ApplicationRecord
 
   validates :item_name, presence: true
   validates :item_text, presence: true
-  validates :category_id, presence: true, numericality: { other_than: 1, message: "can't be blank"}
-  validates :condition_id, presence: true, numericality: { other_than: 1, message: "can't be blank"}
-  validates :charges_id, presence: true, numericality: { other_than: 1, message: "can't be blank"}
-  validates :area_id, presence: true, numericality: { other_than: 1, message: "can't be blank"}
-  validates :days_id, presence: true, numericality: { other_than: 1, message: "can't be blank"}
-  validates :price, presence: true, numericality: { greater_than: 299, less_than: 10000000, message: "must be greater than 299 and must be less than 10000000"}
+  validates :category_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
+  validates :condition_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
+  validates :charges_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
+  validates :area_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
+  validates :days_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
+  validates :price, presence: true, numericality: { greater_than: 299, less_than: 10000000, message: 'must be greater than 299 and must be less than 10000000' }
   validates :image, presence: true
 
   extend ActiveHash::Associations::ActiveRecordExtensions
