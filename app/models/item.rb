@@ -10,7 +10,7 @@ class Item < ApplicationRecord
   validates :charges_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
   validates :area_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
   validates :scheduled_day_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
-  validates :price, presence: true, numericality: { only_integer: true,  message: 'use single-byte number' }
+  validates :price, presence: true, numericality: { only_integer: true, message: 'use single-byte number' }
   validates :price, presence: true, numericality: { greater_than: 299, less_than: 10000000, message: 'must be greater than 299 and must be less than 10000000' }
   validates :image, presence: true
 
