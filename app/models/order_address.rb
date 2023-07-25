@@ -1,4 +1,4 @@
-class CreditAddress
+class OrderAddress
   include ActiveModel::Model
   attr_accessor :postal_code, :area, :city, :house_number, :building_name, :phone_number, :price, :user_id
 
@@ -13,10 +13,10 @@ class CreditAddress
   end
 
   def save
-    credit = Credit.create(price: price, user_id: user_id)
+    order = Order.create(price: price, user_id: user_id)
     Address.create(
       postal_code: postal_code, area: area, city: city, house_number: house_number,
-      building_name: building_name, phone_number: phone_number, credit_id: credit.id
+      building_name: building_name, phone_number: phone_number, order_id: order.id
     )
   end
 end
