@@ -19,7 +19,7 @@
         <%= "¥ #{@item.price.to_s(:delimited)}" %>
       </span>
       <span class="item-postage">
-        <%= @item.charges.name %>
+        <%= @item.charge.name %>
       </span>
     </div>
 
@@ -54,7 +54,7 @@
         </tr>
         <tr>
           <th class="detail-item">配送料の負担</th>
-          <td class="detail-value"><%= @item.charges.name %></td>
+          <td class="detail-value"><%= @item.charge.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送元の地域</th>
