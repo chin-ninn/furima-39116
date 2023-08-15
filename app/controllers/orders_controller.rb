@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   before_action :set_order, only: [:index, :create]
+  before_action :order_present, only: [:index, :create]
 
   def index
     if current_user.id != @item.user_id
@@ -40,5 +41,11 @@ class OrdersController < ApplicationController
         card: order_params[:token],
         currency: 'jpy'
       )
+  end
+
+  def order_present
+    if @item.order.present?
+      redirect_to root_path
+    end
   end
 end
