@@ -4,8 +4,8 @@ FactoryBot.define do
     item_text        { Faker::Lorem.sentence }
     category_id      { Faker::Number.between(from: 2, to: 12) }
     condition_id     { Faker::Number.between(from: 2, to: 4) }
-    charges_id       { Faker::Number.between(from: 2, to: 8) }
-    area_id          { Faker::Number.between(from: 2, to: 48) }
+    charge_id        { Faker::Number.between(from: 2, to: 8) }
+    area_id          { Faker::Number.between(from: 1, to: 48) }
     scheduled_day_id { Faker::Number.between(from: 2, to: 5) }
     price            { Faker::Number.between(from: 300, to: 10000000) }
     association :user

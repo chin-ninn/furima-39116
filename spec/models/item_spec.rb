@@ -2,12 +2,13 @@ require 'rails_helper'
 
 RSpec.describe Item, type: :model do
   before do
-    @item = FactoryBot.build(:item)
+    user = FactoryBot.create(:user)
+    @item = FactoryBot.build(:item, user_id: user.id)
   end
 
   describe '商品出品' do
     context '商品出品できる時' do
-      it 'image、item_name、item_text、category_id、condition_id、charges_id、area_id、scheduled_day_id、priceが存在すれば登録できる' do
+      it 'image、item_name、item_text、category_id、condition_id、charge_id、area_id、scheduled_day_id、priceが存在すれば登録できる' do
         expect(@item).to be_valid
       end
     end
@@ -55,16 +56,16 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include "Condition can't be blank"
       end
 
-      it 'charges_idが空だと出品できない' do
-        @item.charges_id = ''
+      it 'charge_idが空だと出品できない' do
+        @item.charge_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include "Charges can't be blank"
+        expect(@item.errors.full_messages).to include "Charge can't be blank"
       end
 
-      it 'charges_idで1を選択すると出品できない' do
-        @item.charges_id = '1'
+      it 'charge_idで1を選択すると出品できない' do
+        @item.charge_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include "Charges can't be blank"
+        expect(@item.errors.full_messages).to include "Charge can't be blank"
       end
 
       it 'area_idが空だと出品できない' do
@@ -74,7 +75,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'area_idで1を選択すると出品できない' do
-        @item.area_id = '1'
+        @item.area_id = '0'
         @item.valid?
         expect(@item.errors.full_messages).to include "Area can't be blank"
       end

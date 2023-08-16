@@ -49,7 +49,7 @@ Things you may want to cover:
 | item_text        | text       | null: false                    |
 | category_id      | integer    | null: false                    |
 | condition_id     | integer    | null: false                    |
-| charges_id       | integer    | null: false                    |
+| charge_id        | integer    | null: false                    |
 | area_id          | integer    | null: false                    |
 | scheduled_day_id | integer    | null: false                    |
 | price            | integer    | null: false                    |
@@ -60,12 +60,13 @@ Things you may want to cover:
 - has_one :purchase
 
 
-## purchasesテーブル
+## ordersテーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
 | user             | references | null: false, foreign_key: true |
 | item             | references | null: false, foreign_key: true |
+| price            | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
