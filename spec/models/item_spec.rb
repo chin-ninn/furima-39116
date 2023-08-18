@@ -105,6 +105,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'priceが300以下だと出品できない' do
+        binding.pry
         @item.price = '200'
         @item.valid?
         expect(@item.errors.full_messages).to include 'Price must be greater than 299 and must be less than 10000000'
